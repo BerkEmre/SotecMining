@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CONFIG>
+  <CON_STR>server=.; Initial Catalog=sotec_mining;Integrated Security=SSPI;</CON_STR>
+  <BEKLEME_SURESI>3600000</BEKLEME_SURESI>
+</CONFIG>
