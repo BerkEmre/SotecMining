@@ -38,6 +38,9 @@ namespace SMAdmin
 
             DataTable dtUrunler = SQL.get("SELECT id, barkod, urunismi, urunkodu, pasifmi FROM URUNLER");
             gv_urunler.DataSource = dtUrunler;
+
+            DataTable dtPazarYerleri = SQL.get("SELECT id, adi, urun_adi, urun_kodu, barkod FROM PAZAR_YERLERI");
+            gv_pazaryeri.DataSource = dtPazarYerleri;
         }
 
         #region Form Olayları
@@ -224,6 +227,22 @@ namespace SMAdmin
                 "    SUM(fiyat) FOR kaynak IN([kod], [isim], [barkod]) " +
                 ") as pivotTable");
             gv_veriler.DataSource = dtVeriler;
+        }
+
+        private void gv_pazaryeri_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (gv_pazaryeri.SelectedRows.Count > 0)
+            {
+                PazarYeriEkleDuzenle f = new PazarYeriEkleDuzenle(Convert.ToInt32(gv_pazaryeri.SelectedRows[0].Cells["cb_id"].Value));
+                f.FormClosing += F_FormClosing1;
+                f.Show();
+            }
+        }
+
+        private void F_FormClosing1(object sender, FormClosingEventArgs e)
+        {
+            DataTable dtPazarYerleri = SQL.get("SELECT id, adi, urun_adi, urun_kodu, barkod FROM PAZAR_YERLERI");
+            gv_pazaryeri.DataSource = dtPazarYerleri;
         }
     }
 }

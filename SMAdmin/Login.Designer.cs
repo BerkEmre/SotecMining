@@ -45,27 +45,38 @@
             this.btn_servis_debug = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_sql = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pb_debug = new System.Windows.Forms.ProgressBar();
             this.bw_debug = new System.ComponentModel.BackgroundWorker();
             this.button2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.gv_pazaryeri = new System.Windows.Forms.DataGridView();
+            this.cb_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_pazar_yeri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gv_pasifmi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gv_urun_adi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gv_barkod = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gv_urun_kodu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.gv_veriler = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
+            this.gv_veriler = new System.Windows.Forms.DataGridView();
             this.urun_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urun_adi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pazar_yeri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urun_barkodu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ismi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gv_urunler)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_pazaryeri)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv_veriler)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gv_urunler
@@ -243,17 +254,6 @@
             this.btn_sql.UseVisualStyleBackColor = true;
             this.btn_sql.Click += new System.EventHandler(this.btn_sql_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::SMAdmin.Properties.Resources.sm_logo_light;
-            this.pictureBox1.Location = new System.Drawing.Point(535, 523);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(209, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // pb_debug
             // 
             this.pb_debug.AccessibleDescription = "";
@@ -294,6 +294,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(12, 48);
             this.tabControl1.Name = "tabControl1";
@@ -313,6 +314,96 @@
             this.tabPage1.Text = "Ürünler";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.gv_pazaryeri);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(724, 443);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Pazar Yerleri";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // gv_pazaryeri
+            // 
+            this.gv_pazaryeri.AllowUserToAddRows = false;
+            this.gv_pazaryeri.AllowUserToDeleteRows = false;
+            this.gv_pazaryeri.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gv_pazaryeri.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gv_pazaryeri.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cb_id,
+            this.col_pazar_yeri,
+            this.gv_pasifmi,
+            this.gv_urun_adi,
+            this.gv_barkod,
+            this.gv_urun_kodu});
+            this.gv_pazaryeri.Location = new System.Drawing.Point(3, 3);
+            this.gv_pazaryeri.Name = "gv_pazaryeri";
+            this.gv_pazaryeri.ReadOnly = true;
+            this.gv_pazaryeri.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gv_pazaryeri.Size = new System.Drawing.Size(715, 434);
+            this.gv_pazaryeri.TabIndex = 0;
+            this.gv_pazaryeri.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gv_pazaryeri_MouseDoubleClick);
+            // 
+            // cb_id
+            // 
+            this.cb_id.DataPropertyName = "id";
+            this.cb_id.HeaderText = "ID";
+            this.cb_id.Name = "cb_id";
+            this.cb_id.ReadOnly = true;
+            this.cb_id.Width = 50;
+            // 
+            // col_pazar_yeri
+            // 
+            this.col_pazar_yeri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_pazar_yeri.DataPropertyName = "adi";
+            this.col_pazar_yeri.HeaderText = "Pazar Yeri";
+            this.col_pazar_yeri.Name = "col_pazar_yeri";
+            this.col_pazar_yeri.ReadOnly = true;
+            // 
+            // gv_pasifmi
+            // 
+            this.gv_pasifmi.DataPropertyName = "pasifmi";
+            this.gv_pasifmi.HeaderText = "Pasif mi?";
+            this.gv_pasifmi.Name = "gv_pasifmi";
+            this.gv_pasifmi.ReadOnly = true;
+            this.gv_pasifmi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_pasifmi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gv_pasifmi.Width = 75;
+            // 
+            // gv_urun_adi
+            // 
+            this.gv_urun_adi.DataPropertyName = "urun_adi";
+            this.gv_urun_adi.HeaderText = "Ürün Adı";
+            this.gv_urun_adi.Name = "gv_urun_adi";
+            this.gv_urun_adi.ReadOnly = true;
+            this.gv_urun_adi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_urun_adi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gv_urun_adi.Width = 90;
+            // 
+            // gv_barkod
+            // 
+            this.gv_barkod.DataPropertyName = "barkod";
+            this.gv_barkod.HeaderText = "Barkod";
+            this.gv_barkod.Name = "gv_barkod";
+            this.gv_barkod.ReadOnly = true;
+            this.gv_barkod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_barkod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gv_barkod.Width = 90;
+            // 
+            // gv_urun_kodu
+            // 
+            this.gv_urun_kodu.DataPropertyName = "urun_kodu";
+            this.gv_urun_kodu.HeaderText = "Ürün Kodu";
+            this.gv_urun_kodu.Name = "gv_urun_kodu";
+            this.gv_urun_kodu.ReadOnly = true;
+            this.gv_urun_kodu.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_urun_kodu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gv_urun_kodu.Width = 90;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.button3);
@@ -324,6 +415,23 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Veriler";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button3.BackColor = System.Drawing.Color.DimGray;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.GreenYellow;
+            this.button3.FlatAppearance.BorderSize = 2;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button3.ForeColor = System.Drawing.Color.GreenYellow;
+            this.button3.Location = new System.Drawing.Point(3, 413);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(123, 27);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Verileri Getir";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // gv_veriler
             // 
@@ -345,23 +453,6 @@
             this.gv_veriler.ReadOnly = true;
             this.gv_veriler.Size = new System.Drawing.Size(715, 408);
             this.gv_veriler.TabIndex = 0;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.BackColor = System.Drawing.Color.DimGray;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.GreenYellow;
-            this.button3.FlatAppearance.BorderSize = 2;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.ForeColor = System.Drawing.Color.GreenYellow;
-            this.button3.Location = new System.Drawing.Point(3, 413);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 27);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Verileri Getir";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // urun_id
             // 
@@ -417,12 +508,35 @@
             this.ismi.Name = "ismi";
             this.ismi.ReadOnly = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::SMAdmin.Properties.Resources.sm_logo_light;
+            this.pictureBox1.Location = new System.Drawing.Point(535, 523);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(209, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Corbel Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.GreenYellow;
+            this.label2.Location = new System.Drawing.Point(249, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "v1.0.1";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(756, 578);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pb_debug);
@@ -443,11 +557,13 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Login_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.gv_urunler)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gv_pazaryeri)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gv_veriler)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,6 +599,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kod;
         private System.Windows.Forms.DataGridViewTextBoxColumn urun_barkodu;
         private System.Windows.Forms.DataGridViewTextBoxColumn ismi;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView gv_pazaryeri;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cb_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_pazar_yeri;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn gv_pasifmi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn gv_urun_adi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn gv_barkod;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn gv_urun_kodu;
+        private System.Windows.Forms.Label label2;
     }
 }
 

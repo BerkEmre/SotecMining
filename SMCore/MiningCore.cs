@@ -4,9 +4,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace SMCore
@@ -65,7 +63,7 @@ namespace SMCore
             {
                 foreach (DataRow dr in SQL.get("SELECT * FROM PAZAR_YERLERI WHERE pasifmi = 0").Rows)
                 {
-                    pazarYeris.Add(new PazarYeri(Convert.ToInt32(dr["id"]), dr["adi"].ToString(), dr["search_url"].ToString(), dr["fiyat_regex"].ToString(), dr["link_regex"].ToString(), dr["resim_regex"].ToString(), dr["node_text"].ToString(), dr["node_item"].ToString()));
+                    pazarYeris.Add(new PazarYeri(Convert.ToInt32(dr["id"]), dr["adi"].ToString(), dr["search_url"].ToString(), dr["fiyat_regex"].ToString(), dr["link_regex"].ToString(), dr["resim_regex"].ToString(), dr["node_text"].ToString(), dr["node_item"].ToString(), Convert.ToInt32(dr["urun_adi"]), Convert.ToInt32(dr["barkod"]), Convert.ToInt32(dr["urun_kodu"])));
                 }
                 foreach(DataRow dr in SQL.get("SELECT * FROM URUNLER WHERE pasifmi = 0").Rows)
                 {
@@ -83,6 +81,9 @@ namespace SMCore
 
         public void Run()
         {
+            //Thread thread = new Thread(Run);
+            //thread.Start();
+
             string aramaKelimesi;
             decimal fiyat;
             string url;
@@ -96,7 +97,7 @@ namespace SMCore
                     {
                         //Ürün ismine göre arama
                         aramaKelimesi = urun.urunIsmi;
-                        if (aramaKelimesi.Length > 0)
+                        if (aramaKelimesi.Length > 0 && pazarYeri.urun_adi == 1)
                         {
                             pazarYeri.siteDateCek(aramaKelimesi);
                             fiyat = pazarYeri.getFiyat();
@@ -106,7 +107,7 @@ namespace SMCore
                         }
                         //Ürün barkoduna göre arama
                         aramaKelimesi = urun.barkod;
-                        if (aramaKelimesi.Length > 0)
+                        if (aramaKelimesi.Length > 0 && pazarYeri.barkod == 1)
                         {
                             pazarYeri.siteDateCek(aramaKelimesi);
                             fiyat = pazarYeri.getFiyat();
@@ -116,7 +117,7 @@ namespace SMCore
                         }
                         //Ürün koduna göre arama
                         aramaKelimesi = urun.urunKodu;
-                        if (aramaKelimesi.Length > 0)
+                        if (aramaKelimesi.Length > 0 && pazarYeri.urun_kodu == 1)
                         {
                             pazarYeri.siteDateCek(aramaKelimesi);
                             fiyat = pazarYeri.getFiyat();

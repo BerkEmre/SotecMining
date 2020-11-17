@@ -19,13 +19,16 @@ namespace SMCore
         public string resimRegex { get; set; }
         public string nodeText { get; set; }
         public string nodeItem { get; set; }
+        public int urun_adi { get; set; }
+        public int barkod { get; set; }
+        public int urun_kodu { get; set; }
 
         private HtmlNodeCollection sonucListesi;
         private string siteData;
         private int bestFiyatIndex = -1;
         Regex decRegex = new Regex(@"[\d]*[\.|,][\d]*");
 
-        public PazarYeri(int id, string pazarYeri, string searchURL, string fiyatRegex, string linkRegex, string resimRegex, string nodeText, string nodeItem)
+        public PazarYeri(int id, string pazarYeri, string searchURL, string fiyatRegex, string linkRegex, string resimRegex, string nodeText, string nodeItem, int urun_adi, int barkod, int urun_kodu)
         {
             this.id = id;
             this.pazarYeri = pazarYeri;
@@ -35,6 +38,9 @@ namespace SMCore
             this.resimRegex = resimRegex;
             this.nodeText = nodeText;
             this.nodeItem = nodeItem;
+            this.urun_adi = urun_adi;
+            this.barkod = barkod;
+            this.urun_kodu = urun_kodu;
         }
 
         public bool siteDateCek(string aramaKelimesi)

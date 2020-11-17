@@ -10,7 +10,6 @@ CREATE TABLE [dbo].[FIYATLAR](
 	[resimurl2] [nvarchar](max) NULL,
 	[resimurl3] [nvarchar](max) NULL
 ) ON [PRIMARY]
-GO
 CREATE TABLE [dbo].[PAZAR_YERLERI](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[adi] [nvarchar](100) NULL,
@@ -20,9 +19,11 @@ CREATE TABLE [dbo].[PAZAR_YERLERI](
 	[resim_regex] [nvarchar](250) NULL,
 	[link_regex] [nvarchar](250) NULL,
 	[node_text] [nvarchar](250) NULL,
-	[node_item] [nvarchar](250) NULL
+	[node_item] [nvarchar](250) NULL,
+	[urun_adi] [bit] NULL,
+	[barkod] [bit] NULL,
+	[urun_kodu] [bit] NULL
 ) ON [PRIMARY]
-GO
 CREATE TABLE [dbo].[URUNLER](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[barkod] [nvarchar](100) NULL,
@@ -33,19 +34,21 @@ CREATE TABLE [dbo].[URUNLER](
 GO
 SET IDENTITY_INSERT [dbo].[PAZAR_YERLERI] ON 
 GO
-INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item]) VALUES (1, N'Amazon', 1, N'https://www.amazon.com.tr/s?k={0}', N'//span[contains(@class, ''a-offscreen'')]', N'<img src="([^\"]*)" class="s-image" alt="[^"]*" srcset="[^"]*" data-image-index', N'<a class="a-link-normal s-no-outline" href="([^\"]*)">', N'//div[contains(@class, ''s-main-slot s-result-list s-search-results sg-row'')]', N'//span[contains(@class, ''celwidget slot=MAIN template=SEARCH_RESULTS widgetId=search-results'')]')
+INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item], [urun_adi], [barkod], [urun_kodu]) VALUES (1, N'Amazon', 1, N'https://www.amazon.com.tr/s?k={0}', N'//span[contains(@class, ''a-offscreen'')]', N'<img src="([^\"]*)" class="s-image" alt="[^"]*" srcset="[^"]*" data-image-index', N'<a class="a-link-normal s-no-outline" href="([^\"]*)">', N'//div[contains(@class, ''s-main-slot s-result-list s-search-results sg-row'')]', N'//span[contains(@class, ''celwidget slot=MAIN template=SEARCH_RESULTS widgetId=search-results'')]', 1, 1, 1)
 GO
-INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item]) VALUES (2, N'Ebebek', 0, N'https://www.e-bebek.com/search?text={0}', N'//div[contains(@class, ''price-new'')]', N'<img src=\"([^\"]*)\" alt="[^\"]*" title="[^\"]*" class="img-fluid" width="" height="">', N'<a href=\"([^\"]*)\" class="product-btn ">', N'//section[contains(@class, ''product-list'')]', N'//div[contains(@class, ''col-6 col-sm-6 col-md-4 col-lg-4 col-xl-2 px-1'')]')
+INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item], [urun_adi], [barkod], [urun_kodu]) VALUES (2, N'Ebebek', 1, N'https://www.e-bebek.com/search?text={0}', N'//div[contains(@class, ''price-new'')]', N'<img src=\"([^\"]*)\" alt="[^\"]*" title="[^\"]*" class="img-fluid" width="" height="">', N'<a href=\"([^\"]*)\" class="product-btn ">', N'//section[contains(@class, ''product-list'')]', N'//div[contains(@class, ''col-6 col-sm-6 col-md-4 col-lg-4 col-xl-2 px-1'')]', 1, 1, 1)
 GO
-INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item]) VALUES (3, N'Civilim', 0, N'https://www.civilim.com/urunara?srchtxt={0}', N'//span[contains(@class, ''price-sales'')]', N'<img data-src=''([^'']*)'' src=''[^'']*'' alt="[^"]*" class="img-responsive lazyload" title="[^"]*">', N'<a href=''([^'']*)'' title=''[^'']*''>', N'//div[contains(@class, ''listitems row'')]', N'//div[contains(@class, ''listitem item itemauto col-lg-8 col-md-8 col-sm-12 col-xs-12 col-xs-min-12'')]')
+INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item], [urun_adi], [barkod], [urun_kodu]) VALUES (3, N'Civilim', 1, N'https://www.civilim.com/urunara?srchtxt={0}', N'//span[contains(@class, ''price-sales'')]', N'<img data-src=''([^'']*)'' src=''[^'']*'' alt="[^"]*" class="img-responsive lazyload" title="[^"]*">', N'<a href=''([^'']*)'' title=''[^'']*''>', N'//div[contains(@class, ''listitems row'')]', N'//div[contains(@class, ''listitem item itemauto col-lg-8 col-md-8 col-sm-12 col-xs-12 col-xs-min-12'')]', 1, 1, 1)
 GO
-INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item]) VALUES (4, N'Babymall', 0, N'https://www.babymall.com.tr/arama?q={0}', N'//div[contains(@class, ''pgs-action-price pgs-action-price-new'')]', N'<img class="[^"]*" src="[^"]*" data-src="([^"]*)" alt', N'<a class="pgs-action-name" href="([^"]*)" title="[^"]*">', N'//ul[contains(@class, ''catalog-view'')]', N'//li[contains(@itemscope, ''itemscope'')]')
+INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item], [urun_adi], [barkod], [urun_kodu]) VALUES (4, N'Babymall', 1, N'https://www.babymall.com.tr/arama?q={0}', N'//div[contains(@class, ''pgs-action-price pgs-action-price-new'')]', N'<img class="[^"]*" src="[^"]*" data-src="([^"]*)" alt', N'<a class="pgs-action-name" href="([^"]*)" title="[^"]*">', N'//ul[contains(@class, ''catalog-view'')]', N'//li[contains(@itemscope, ''itemscope'')]', 1, 1, 1)
 GO
-INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item]) VALUES (5, N'Hepsiburada', 1, N'https://www.hepsiburada.com/ara?q={0}', N'//span[contains(@class, ''price product-price'')]', N'<img data-src=''([^'']*)''', N'<a href="([^\"]*)"', N'//ul[contains(@class, ''product-list results-container do-flex list'')]', N'//li[contains(@class, ''search-item col lg-1 md-1 sm-1  custom-hover not-fashion-flex'')]')
+INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item], [urun_adi], [barkod], [urun_kodu]) VALUES (5, N'Hepsiburada', 1, N'https://www.hepsiburada.com/ara?q={0}', N'//span[contains(@class, ''price product-price'')]', N'<img data-src=''([^'']*)''', N'<a href="([^\"]*)"', N'//ul[contains(@class, ''product-list results-container do-flex list'')]', N'//li[contains(@class, ''search-item col lg-1 md-1 sm-1  custom-hover not-fashion-flex'')]', 1, 1, 1)
 GO
-INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item]) VALUES (6, N'N11', 1, N'https://www.n11.com/arama?q={0}', N'//ins[contains(@class, '''')]', N'<img data-original="([^"]*)"', N'<a href="([^"]*)" title="[^"]*"', N'//ul[contains(@class, ''clearfix'')]', N'//li[contains(@class, ''column '')]')
+INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item], [urun_adi], [barkod], [urun_kodu]) VALUES (6, N'N11', 1, N'https://www.n11.com/arama?q={0}', N'//ins[contains(@class, '''')]', N'<img data-original="([^"]*)"', N'<a href="([^"]*)" title="[^"]*"', N'//ul[contains(@class, ''clearfix'')]', N'//li[contains(@class, ''column '')]', 1, 1, 1)
 GO
-INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item]) VALUES (7, N'Joker', 0, N'https://www.joker.com.tr/arama/?keyword={0}', N'//span[contains(@class, ''discount-price '')]', N'<meta itemprop="image" content="(.*)">', N'<a href="(.*)" class="product-click-item">', N'//ul[contains(@class, ''j-product-list grid-4col'')]', N'//li[contains(@class, ''item product col-md-4 col-sm-4 col-xs-6   stock-out-state-active '')]')
+INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item], [urun_adi], [barkod], [urun_kodu]) VALUES (7, N'Joker', 1, N'https://www.joker.com.tr/arama/?keyword={0}', N'//span[contains(@class, ''discount-price '')]', N'<meta itemprop="image" content="(.*)">', N'<a href="(.*)" class="product-click-item">', N'//ul[contains(@class, ''j-product-list grid-4col'')]', N'//li[contains(@class, ''item product col-md-4 col-sm-4 col-xs-6   stock-out-state-active '')]', 1, 1, 1)
+GO
+INSERT [dbo].[PAZAR_YERLERI] ([id], [adi], [pasifmi], [search_url], [fiyat_regex], [resim_regex], [link_regex], [node_text], [node_item], [urun_adi], [barkod], [urun_kodu]) VALUES (8, N'Trendyol', 0, N'https://www.trendyol.com/tum--urunler?q={0}', N'//div[contains(@class, ''prc-box-sllng'')]', N'<img class="p-card-img" src="([^"]*)" alt="[^"]*">', N'<a href="(.*)" ', N'//div[contains(@class, ''prdct-cntnr-wrppr'')]', N'//div[contains(@class, ''p-card-wrppr add-to-bs-card'')]', 1, 1, 1)
 GO
 SET IDENTITY_INSERT [dbo].[PAZAR_YERLERI] OFF
 GO
@@ -94,4 +97,3 @@ GO
 INSERT [dbo].[URUNLER] ([id], [barkod], [urunismi], [urunkodu], [pasifmi]) VALUES (2720, N'8699202310233', N'BABYJEM ÇOK Yönlü ALT AÇMA BEYAZ YEŞİL', N'110.04.023.BYE.00000', 0)
 GO
 SET IDENTITY_INSERT [dbo].[URUNLER] OFF
-GO
