@@ -1,0 +1,2 @@
+# SotecMining
+Sotec pazaryeri datamining
