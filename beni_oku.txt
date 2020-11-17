@@ -1,0 +1,51 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------
+|Sotec Mining | DataMining App                                                                                                                    |
+|-------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                                                                                                 |
+|Berk Emre ALTAN                                                                                                                                  |
+|berkemrealtan@gmail.com                                                                                                                          |
+|SotecMedia.com                                                                                                                                   |
+|                                                                                                                                                 |
+---------------------------------------------------------------------------------------------------------------------------------------------------
+***************************************************************************************************************************************************
+Kurulum aşamaları:
+
+1)MsSQL server da yeni bir database oluşturun.
+
+2)Oluşturduğunuz database için klasör içindeki SQL.sql dosyasını çalıştırın, SQL tabloları ve örnek veriler yüklenecektir.
+
+3)CONFIG.xml içinden SQL connection string inizi yazınız.
+
+4)CONGIG.xml içinden bütün ürünleri çektikten sonra kaç milisaniye bekleyeceğini girebilirsiniz.
+
+5)SotecMining.exe programı servis programıdır, servislere ekleyerek kullanmaya başlayabilirsiniz.
+
+***************************************************************************************************************************************************
+SotecAdmin.exe
+
+Açılan programda Ürünler tabında ürünlerinizi görebilirsiniz, yen ürün eklemek için sol alttan yeni ürün ekle butonunu kullanabilirsiniz,
+mevcut ürünü düzenlemek için üstüne çift tıklayınız, silmek için ürünü seçerek DEL tuşuna basınız.
+
+Veriler tabında çekilen ürün verilerini görebilirsiniz, verileri getir butonu ile son verileri getirir.
+
+Alt kısımda bulunan veri çek butonu ile ürün fiyatları manuel olarak çekilmeye başlar, yanında bulunan progress bar ile ilerleme durumunu
+takip edebilirsiniz.
+
+***************************************************************************************************************************************************
+Notlar:
+
+SotecAdmin.exe yönetim uygulamasıdır (Ürünleri tanımlayabilir/değiştirebilir, verileri kontrol edebilir ve test yapabilirsiniz)
+
+SotecMining.exe servis programıdır windows servislere kurmanız gerekir, kurulumdan sonra servisi başlattığınız anda veriler çekilmeye 
+başlar sonsuz döngü olarak çalışır, servisi durdurana kadar sürekli olarak veri çeker.
+
+CONFIG.xml veya veritabanında(Ürünler tablosu hariç) değişiklik yaparsanız servisi durdurup tekrar başlatınız.
+
+Yeni eklenen ürünler servis 1 tam tur çalıştıktan sonra listeye eklenir ve sonraki turda fiyatları çekilmeye başlar.
+
+1 ürün için 1 pazaryerinden veri çekmek ortalama 3 saniye sürer (sayfanın yüklenmesi ve verilerin okunması internet hızına göre değişebilir)
+1000 ürün 5 pazaryerindeki tüm fiyatlarının çekilmesi ortalama 250dk yani 4.2 saat sürer.
+
+Hata alınması durumunda proje klasörü içinde log_(tarih).txt dosyasına hata günlüğü tutulur.
+
+***************************************************************************************************************************************************
