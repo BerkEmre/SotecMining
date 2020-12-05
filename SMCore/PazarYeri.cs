@@ -26,7 +26,7 @@ namespace SMCore
         private HtmlNodeCollection sonucListesi;
         private string siteData;
         private int bestFiyatIndex = -1;
-        Regex decRegex = new Regex(@"[\d]*[\.|,][\d]*");
+        Regex decRegex = new Regex(@"[\d]*[\.|,]?[\d]*");
 
         public PazarYeri(int id, string pazarYeri, string searchURL, string fiyatRegex, string linkRegex, string resimRegex, string nodeText, string nodeItem, int urun_adi, int barkod, int urun_kodu)
         {
@@ -43,15 +43,29 @@ namespace SMCore
             this.urun_kodu = urun_kodu;
         }
 
+        public string reAramaKelimesi(string input)
+        {
+            input = input.Replace("&", "%26");
+            input = input.Replace("?", "%3F");
+            input = input.Replace("/", "%2F");
+            input = input.Replace(@"\", "%5C");
+            input = input.Replace("'", "%27");
+
+            return input;
+        }
+
         public bool siteDateCek(string aramaKelimesi)
         {
-            string url;
+            siteData = "";
+            sonucListesi = null;
+            aramaKelimesi = reAramaKelimesi(aramaKelimesi);
             try
             {
                 using (WebClient client = new WebClient())
                 {
-                    url = String.Format(searchURL, aramaKelimesi);
-                    siteData = client.DownloadString(url);
+                    client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)");
+                    Uri myUri = new Uri(String.Format(searchURL, aramaKelimesi), UriKind.Absolute);
+                    siteData = client.DownloadString(myUri);
                     HtmlDocument doc = new HtmlDocument();
                     doc.LoadHtml(siteData);
                     HtmlNodeCollection htmlNodes = doc.DocumentNode.SelectNodes(@nodeText);

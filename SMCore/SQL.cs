@@ -39,7 +39,7 @@ namespace SMCore
             }
             else
             {
-                Log.WriteLog("SQL bağlantısı yapılamadı.");
+                Log.WriteLog("SQL bağlantısı yapılamadı. => " + text);
                 return false;
             }
         }
@@ -84,6 +84,45 @@ namespace SMCore
             {
                 Log.WriteLog("SQL bağlantısı koptu.");
                 con.Close();
+            }
+        }
+    
+        public static DataTable getU(string query)
+        {
+            using (SqlConnection connection = new SqlConnection(text))
+            {
+                try
+                {
+                    SqlDataAdapter da = new SqlDataAdapter(query, connection);
+                    DataSet ds = new DataSet();
+                    connection.Open();
+                    da.Fill(ds);
+                    DataTable dt = ds.Tables[0];
+                    connection.Close();
+                    return dt;
+                }
+                catch (Exception e)
+                {
+                    Log.WriteLog("SQL bağlantısı koptu.");
+                    return null;
+                }
+            }
+        }
+
+        public static void setU(string query)
+        {
+            using (SqlConnection connection = new SqlConnection(text))
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Log.WriteLog("SQL bağlantısı koptu.");
+                }
             }
         }
     }

@@ -39,7 +39,7 @@ namespace SMAdmin
             DataTable dtUrunler = SQL.get("SELECT id, barkod, urunismi, urunkodu, pasifmi FROM URUNLER");
             gv_urunler.DataSource = dtUrunler;
 
-            DataTable dtPazarYerleri = SQL.get("SELECT id, adi, urun_adi, urun_kodu, barkod FROM PAZAR_YERLERI");
+            DataTable dtPazarYerleri = SQL.get("SELECT id, adi, urun_adi, urun_kodu, barkod, pasifmi FROM PAZAR_YERLERI");
             gv_pazaryeri.DataSource = dtPazarYerleri;
         }
 
@@ -241,7 +241,7 @@ namespace SMAdmin
 
         private void F_FormClosing1(object sender, FormClosingEventArgs e)
         {
-            DataTable dtPazarYerleri = SQL.get("SELECT id, adi, urun_adi, urun_kodu, barkod FROM PAZAR_YERLERI");
+            DataTable dtPazarYerleri = SQL.get("SELECT id, adi, urun_adi, urun_kodu, barkod, pasifmi FROM PAZAR_YERLERI");
             gv_pazaryeri.DataSource = dtPazarYerleri;
         }
     }

@@ -52,12 +52,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.gv_pazaryeri = new System.Windows.Forms.DataGridView();
-            this.cb_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_pazar_yeri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gv_pasifmi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gv_urun_adi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gv_barkod = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gv_urun_kodu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.gv_veriler = new System.Windows.Forms.DataGridView();
@@ -69,6 +63,12 @@
             this.ismi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cb_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_pazar_yeri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gv_pasifmi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gv_urun_adi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gv_barkod = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gv_urun_kodu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gv_urunler)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -348,62 +348,6 @@
             this.gv_pazaryeri.TabIndex = 0;
             this.gv_pazaryeri.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gv_pazaryeri_MouseDoubleClick);
             // 
-            // cb_id
-            // 
-            this.cb_id.DataPropertyName = "id";
-            this.cb_id.HeaderText = "ID";
-            this.cb_id.Name = "cb_id";
-            this.cb_id.ReadOnly = true;
-            this.cb_id.Width = 50;
-            // 
-            // col_pazar_yeri
-            // 
-            this.col_pazar_yeri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_pazar_yeri.DataPropertyName = "adi";
-            this.col_pazar_yeri.HeaderText = "Pazar Yeri";
-            this.col_pazar_yeri.Name = "col_pazar_yeri";
-            this.col_pazar_yeri.ReadOnly = true;
-            // 
-            // gv_pasifmi
-            // 
-            this.gv_pasifmi.DataPropertyName = "pasifmi";
-            this.gv_pasifmi.HeaderText = "Pasif mi?";
-            this.gv_pasifmi.Name = "gv_pasifmi";
-            this.gv_pasifmi.ReadOnly = true;
-            this.gv_pasifmi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_pasifmi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.gv_pasifmi.Width = 75;
-            // 
-            // gv_urun_adi
-            // 
-            this.gv_urun_adi.DataPropertyName = "urun_adi";
-            this.gv_urun_adi.HeaderText = "Ürün Adı";
-            this.gv_urun_adi.Name = "gv_urun_adi";
-            this.gv_urun_adi.ReadOnly = true;
-            this.gv_urun_adi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_urun_adi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.gv_urun_adi.Width = 90;
-            // 
-            // gv_barkod
-            // 
-            this.gv_barkod.DataPropertyName = "barkod";
-            this.gv_barkod.HeaderText = "Barkod";
-            this.gv_barkod.Name = "gv_barkod";
-            this.gv_barkod.ReadOnly = true;
-            this.gv_barkod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_barkod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.gv_barkod.Width = 90;
-            // 
-            // gv_urun_kodu
-            // 
-            this.gv_urun_kodu.DataPropertyName = "urun_kodu";
-            this.gv_urun_kodu.HeaderText = "Ürün Kodu";
-            this.gv_urun_kodu.Name = "gv_urun_kodu";
-            this.gv_urun_kodu.ReadOnly = true;
-            this.gv_urun_kodu.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_urun_kodu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.gv_urun_kodu.Width = 90;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.button3);
@@ -530,6 +474,64 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "v1.0.1";
             // 
+            // cb_id
+            // 
+            this.cb_id.DataPropertyName = "id";
+            this.cb_id.HeaderText = "ID";
+            this.cb_id.Name = "cb_id";
+            this.cb_id.ReadOnly = true;
+            this.cb_id.Width = 50;
+            // 
+            // col_pazar_yeri
+            // 
+            this.col_pazar_yeri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_pazar_yeri.DataPropertyName = "adi";
+            this.col_pazar_yeri.HeaderText = "Pazar Yeri";
+            this.col_pazar_yeri.Name = "col_pazar_yeri";
+            this.col_pazar_yeri.ReadOnly = true;
+            // 
+            // gv_pasifmi
+            // 
+            this.gv_pasifmi.DataPropertyName = "pasifmi";
+            this.gv_pasifmi.FalseValue = "0";
+            this.gv_pasifmi.HeaderText = "Pasif mi?";
+            this.gv_pasifmi.Name = "gv_pasifmi";
+            this.gv_pasifmi.ReadOnly = true;
+            this.gv_pasifmi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_pasifmi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gv_pasifmi.TrueValue = "1";
+            this.gv_pasifmi.Width = 75;
+            // 
+            // gv_urun_adi
+            // 
+            this.gv_urun_adi.DataPropertyName = "urun_adi";
+            this.gv_urun_adi.HeaderText = "Ürün Adı";
+            this.gv_urun_adi.Name = "gv_urun_adi";
+            this.gv_urun_adi.ReadOnly = true;
+            this.gv_urun_adi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_urun_adi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gv_urun_adi.Width = 90;
+            // 
+            // gv_barkod
+            // 
+            this.gv_barkod.DataPropertyName = "barkod";
+            this.gv_barkod.HeaderText = "Barkod";
+            this.gv_barkod.Name = "gv_barkod";
+            this.gv_barkod.ReadOnly = true;
+            this.gv_barkod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_barkod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gv_barkod.Width = 90;
+            // 
+            // gv_urun_kodu
+            // 
+            this.gv_urun_kodu.DataPropertyName = "urun_kodu";
+            this.gv_urun_kodu.HeaderText = "Ürün Kodu";
+            this.gv_urun_kodu.Name = "gv_urun_kodu";
+            this.gv_urun_kodu.ReadOnly = true;
+            this.gv_urun_kodu.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_urun_kodu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.gv_urun_kodu.Width = 90;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,13 +603,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ismi;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView gv_pazaryeri;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cb_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_pazar_yeri;
         private System.Windows.Forms.DataGridViewCheckBoxColumn gv_pasifmi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn gv_urun_adi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn gv_barkod;
         private System.Windows.Forms.DataGridViewCheckBoxColumn gv_urun_kodu;
-        private System.Windows.Forms.Label label2;
     }
 }
 
